@@ -63,4 +63,5 @@
     <orderEntry type="library" name="Maven: com.github.detro.ghostdriver:phantomjsdriver:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: ru.stqa.selenium:webdriver-factory:1.0" level="project" />
   </component>
+  <component name="POM File Configuration" pomFile="" />
 </module>
