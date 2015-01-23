@@ -1,16 +1,16 @@
 package iakov_volf;
 
-import java.util.concurrent.TimeUnit;
-
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.Capabilities;
-
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
-
 import ru.stqa.selenium.factory.WebDriverFactory;
 
-import iakov_volf.util.PropertyLoader;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import static iakov_volf.util.PropertyLoader.loadCapabilities;
+import static iakov_volf.util.PropertyLoader.loadProperty;
 
 /**
  * Base class for all the TestNG-based test classes
@@ -23,10 +23,11 @@ public class TestNgTestBase {
 
   @BeforeClass
   public void init() throws IOException {
-    baseUrl = PropertyLoader.loadProperty("site.url");
-    gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
+    baseUrl = loadProperty("site.url");
+    gridHubUrl = loadProperty("grid2.hub");
 
-    Capabilities capabilities = PropertyLoader.loadCapabilities();
+    Capabilities capabilities;
+    capabilities = loadCapabilities();
 
     driver = WebDriverFactory.getDriver(gridHubUrl, capabilities);
 
