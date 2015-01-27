@@ -14,21 +14,13 @@ import static org.testng.Assert.assertEquals;
  * Created by Lena on 22/01/2015.
  */
 public class PriceTest extends TestNgTestBase {
-
-
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    @Before
-    public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        baseUrl = "http://dev.remonline.ru/";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    }
+
 
     @Test
-    public void testUntitled() throws Exception {
-        driver.get(baseUrl + "/");
+    public void testPrice() throws Exception {
         driver.findElement(By.linkText("Стоимость")).click();
         driver.findElement(By.xpath("//li[@data-currency=\"UAH\"]")).click();
         driver.findElement(By.xpath("//li[@data-currency=\"RUB\"]")).click();
