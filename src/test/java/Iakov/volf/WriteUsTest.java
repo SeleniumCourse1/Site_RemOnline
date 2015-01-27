@@ -17,9 +17,9 @@ public class WriteUsTest {
     public void testWriteUs() throws Exception {
         driver.get(baseUrl + "/");
         driver.findElement(By.cssSelector("span.js-auth-feedback.h-dashed-link")).click();
-        driver.findElement(By.id("l-auth-name")).clear();
+
         driver.findElement(By.id("l-auth-name")).sendKeys("Slava");
-        driver.findElement(By.id("l-auth-email")).clear();
+
         driver.findElement(By.id("l-auth-email")).sendKeys("miroxa1979@mail.ru");
         driver.findElement(By.id("l-auth-message")).clear();
         driver.findElement(By.id("l-auth-message")).sendKeys("Test");
