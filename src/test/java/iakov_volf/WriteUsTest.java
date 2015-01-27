@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
-public class WriteUs {
+public class WriteUsTest {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
