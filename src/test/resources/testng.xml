@@ -3,7 +3,7 @@
 <suite name="Tests" verbose="5">
   <test name="Test1">
     <classes>
-      <class name="iakov_volf.SampleTestNgTest"/>
+      <class name="Iakov.volf.SampleTestNgTest"/>
     </classes>
   </test>  
 </suite>

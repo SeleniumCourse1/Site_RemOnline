@@ -1,4 +1,4 @@
-package iakov_volf;
+package Iakov.volf;
 
 /**
  * Created by yura on 1/27/2015.
@@ -14,7 +14,9 @@ public class AddCompanyTest extends TestNgTestBase {
     private StringBuffer verificationErrors = new StringBuffer();
 
     @Test
-    public void testRemoteOnline() throws Exception {    // ERROR: Caught exception [Error: unknown strategy [class] for locator [class=b-button b-button_type_cta b-button_color_lgreen js-auth-signup h-mt-35]]
+    public void testRemoteOnline() throws Exception {
+        // ERROR: Caught exception [Error: unknown strategy [class] for locator [class=b-button b-button_type_cta b-button_color_lgreen js-auth-signup h-mt-35]]
+        driver.get(baseUrl);
         driver.findElement(By.id("l-auth-email")).clear();
         driver.findElement(By.id("l-auth-email")).sendKeys("yurashvartz@gmail.com");
         driver.findElement(By.id("l-auth-login")).clear();

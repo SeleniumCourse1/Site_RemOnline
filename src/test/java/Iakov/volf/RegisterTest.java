@@ -1,4 +1,4 @@
-package iakov_volf;
+package Iakov.volf;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -7,6 +7,10 @@ import org.testng.annotations.Test;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+/**
+ * Created by Iakov
+ */
 
 public class RegisterTest extends TestNgTestBase {
     private boolean acceptNextAlert = true;
@@ -27,9 +31,12 @@ public class RegisterTest extends TestNgTestBase {
         driver.findElement(By.id("l-auth-pass")).clear();
         driver.findElement(By.id("l-auth-pass")).sendKeys("123456");
         driver.findElement(By.xpath("//*[text()[contains(.,'Начать 14-дневный пробный период')]]")).click();
-        for (int second = 0;; second++) {
+        for (int second = 0; ; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.xpath("//body/div[4]"))) break; } catch (Exception e) {}
+            try {
+                if (isElementPresent(By.xpath("//body/div[4]"))) break;
+            } catch (Exception e) {
+            }
             Thread.sleep(1000);
         }
 
