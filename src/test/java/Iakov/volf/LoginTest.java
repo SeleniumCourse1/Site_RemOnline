@@ -15,6 +15,7 @@ public class LoginTest extends TestNgTestBase {
     public void TestLoginSuccess() {
         try {
             login();
+            verifyText("Перетащите сюда колонку для группировки данных");
 
 
         } catch (Exception e) {

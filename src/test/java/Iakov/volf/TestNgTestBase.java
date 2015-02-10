@@ -56,9 +56,9 @@ public class TestNgTestBase {
         clickToPage();
     }
 
-    protected void verifyText() {
+    protected void verifyText(String text) {
         try {
-            assertEquals("Перетащите сюда колонку для группировки данных", driver.findElement(By.cssSelector("div.k-grouping-header")).getText());
+            assertEquals(text, driver.findElement(By.cssSelector("div.k-grouping-header")).getText());
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
