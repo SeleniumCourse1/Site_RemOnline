@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Remonline2015.iml" filepath="$PROJECT_DIR$/Remonline2015.iml" />
-      <module fileurl="file://$PROJECT_DIR$/remonline-java.iml" filepath="$PROJECT_DIR$/remonline-java.iml" />
     </modules>
   </component>
 </project>
