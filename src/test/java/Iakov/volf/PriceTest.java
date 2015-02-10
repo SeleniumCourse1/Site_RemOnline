@@ -1,11 +1,7 @@
 package Iakov.volf;
 
-import org.junit.Before;
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
@@ -21,6 +17,7 @@ public class PriceTest extends TestNgTestBase {
 
     @Test
     public void testPrice() throws Exception {
+        driver.get(baseUrl + "/");
         driver.findElement(By.linkText("Стоимость")).click();
         driver.findElement(By.xpath("//li[@data-currency=\"UAH\"]")).click();
         driver.findElement(By.xpath("//li[@data-currency=\"RUB\"]")).click();
