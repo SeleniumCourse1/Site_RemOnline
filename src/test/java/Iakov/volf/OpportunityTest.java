@@ -7,7 +7,6 @@ package Iakov.volf;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -35,12 +34,7 @@ public class OpportunityTest extends TestNgTestBase {
     }
 
     private boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+        return super.isElementPresent(by);
     }
 
     private String closeAlertAndGetItsText() {

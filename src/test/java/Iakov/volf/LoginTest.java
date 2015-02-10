@@ -6,38 +6,22 @@ package Iakov.volf;
 
 
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
-
 public class LoginTest extends TestNgTestBase {
-    private boolean acceptNextAlert = true;
-    private StringBuffer verificationErrors = new StringBuffer();
+    protected boolean acceptNextAlert = true;
 
     @Test
-    public void testLogin() throws Exception {
-        driver.get(baseUrl);
-        driver.findElement(By.xpath("//*[@class='js-auth-signin b-navbar__exit h-ml-10']")).click();
-        driver.findElement(By.id("l-auth-login")).sendKeys("Mary");
-        driver.findElement(By.id("l-auth-pass")).sendKeys("123456");
-        driver.findElement(By.xpath("//div[3]/button")).click();
-        driver.findElement(By.cssSelector("div.b-wrapper__content")).click();
+    public void TestLoginSuccess() {
         try {
-            assertEquals("Перетащите сюда колонку для группировки данных", driver.findElement(By.cssSelector("div.k-grouping-header")).getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-    }
+            login();
 
-    private boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+
     }
 
     private String closeAlertAndGetItsText() {

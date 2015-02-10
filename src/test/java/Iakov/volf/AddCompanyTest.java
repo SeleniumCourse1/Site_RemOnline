@@ -6,7 +6,6 @@ package Iakov.volf;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.annotations.Test;
 
 public class AddCompanyTest extends TestNgTestBase {
@@ -36,14 +35,6 @@ public class AddCompanyTest extends TestNgTestBase {
         driver.findElement(By.xpath("//div[6]/button")).click();
     }
 
-    private boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
 
     private String closeAlertAndGetItsText() {
         try {
