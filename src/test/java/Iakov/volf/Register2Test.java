@@ -19,12 +19,7 @@ public class Register2Test extends TestNgTestBase {
     public void testReg1() throws Exception {
         driver.get(baseUrl + "/");
         driver.findElement(By.xpath("//span")).click();
-        driver.findElement(By.id("l-auth-email")).clear();
-        driver.findElement(By.id("l-auth-email")).sendKeys("volf2g47672@gmail.com");
-        driver.findElement(By.id("l-auth-login")).clear();
-        driver.findElement(By.id("l-auth-login")).sendKeys("hVolf766");
-        driver.findElement(By.id("l-auth-pass")).clear();
-        driver.findElement(By.id("l-auth-pass")).sendKeys("123987666");
+        addDataToRegFields("volf2g47672@gmail.com", "hVolf766", "123987666");
         driver.findElement(By.xpath("//div[5]/button")).click();
         try {
             assertEquals("Моя мастерская", driver.findElement(By.xpath("//span[@class = \"b-navigation-control__item h-mt-3 h-branch-1\"]")).getText());
@@ -39,9 +34,6 @@ public class Register2Test extends TestNgTestBase {
         }
     }
 
-    private boolean isElementPresent(By by) {
-        return super.isElementPresent(by);
-    }
 
     private String closeAlertAndGetItsText() {
         try {

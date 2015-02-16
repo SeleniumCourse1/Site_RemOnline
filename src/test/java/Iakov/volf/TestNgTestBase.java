@@ -93,4 +93,10 @@ public class TestNgTestBase {
             return false;
         }
     }
+
+    protected void addDataToRegFields(String Email, String login, String pass) {
+        driver.findElement(By.id("l-auth-email")).sendKeys(Email);
+        driver.findElement(By.id("l-auth-login")).sendKeys(login);
+        driver.findElement(By.id("l-auth-pass")).sendKeys(pass);
+    }
 }
