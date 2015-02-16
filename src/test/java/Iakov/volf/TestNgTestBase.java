@@ -99,4 +99,8 @@ public class TestNgTestBase {
         driver.findElement(By.id("l-auth-login")).sendKeys(login);
         driver.findElement(By.id("l-auth-pass")).sendKeys(pass);
     }
+
+    protected void clickButoonReg() {
+        driver.findElement(By.xpath("//span")).click();
+    }
 }

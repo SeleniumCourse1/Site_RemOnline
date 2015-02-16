@@ -18,9 +18,9 @@ public class Register2Test extends TestNgTestBase {
     @Test
     public void testReg1() throws Exception {
         driver.get(baseUrl + "/");
-        driver.findElement(By.xpath("//span")).click();
+        clickButoonReg();
         addDataToRegFields("volf2g47672@gmail.com", "hVolf766", "123987666");
-        driver.findElement(By.xpath("//div[5]/button")).click();
+        clickButtonEnter();
         try {
             assertEquals("Моя мастерская", driver.findElement(By.xpath("//span[@class = \"b-navigation-control__item h-mt-3 h-branch-1\"]")).getText());
         } catch (Error e) {
@@ -32,6 +32,10 @@ public class Register2Test extends TestNgTestBase {
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+    }
+
+    protected void clickButtonEnter() {
+        driver.findElement(By.xpath("//div[5]/button")).click();
     }
 
 
