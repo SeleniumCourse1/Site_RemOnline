@@ -1,6 +1,8 @@
 package Iakov.volf;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -22,6 +24,10 @@ public class PriceTest extends TestNgTestBase {
         driver.findElement(By.xpath("//li[@data-currency=\"UAH\"]")).click();
         driver.findElement(By.xpath("//li[@data-currency=\"RUB\"]")).click();
         driver.findElement(By.xpath("//button")).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 5); // wait for a maximum of 5 seconds
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.b-modal > h2.h-ta-c")));
+
         try {
             assertEquals("Регистрация компании", driver.findElement(By.cssSelector("div.b-modal > h2.h-ta-c")).getText());
         } catch (Error e) {

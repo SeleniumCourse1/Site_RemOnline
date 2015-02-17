@@ -33,9 +33,6 @@ public class OpportunityTest extends TestNgTestBase {
         }
     }
 
-    private boolean isElementPresent(By by) {
-        return super.isElementPresent(by);
-    }
 
     private String closeAlertAndGetItsText() {
         try {
