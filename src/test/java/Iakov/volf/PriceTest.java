@@ -19,8 +19,8 @@ public class PriceTest extends TestNgTestBase {
 
     @Test
     public void testPrice() throws Exception {
-        driver.get(baseUrl + "/");
-        driver.findElement(By.linkText("Стоимость")).click();
+        openMainPage();
+        clickToPrice();
         driver.findElement(By.xpath("//li[@data-currency=\"UAH\"]")).click();
         driver.findElement(By.xpath("//li[@data-currency=\"RUB\"]")).click();
         driver.findElement(By.xpath("//button")).click();
@@ -34,6 +34,10 @@ public class PriceTest extends TestNgTestBase {
             verificationErrors.append(e.toString());
         }
         driver.findElement(By.cssSelector("div.reveal-modal-bg")).click();
+    }
+
+    protected void clickToPrice() {
+        driver.findElement(By.linkText("Стоимость")).click();
     }
 
 }

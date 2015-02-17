@@ -49,7 +49,7 @@ public class TestNgTestBase {
 
 
     public void login() throws Exception {
-        openPage();
+        openMainPage();
         clickToLogin();
         fillTheFields("Mary", "123456");
         pressToSubmitButton();
@@ -81,7 +81,7 @@ public class TestNgTestBase {
         driver.findElement(By.xpath("//*[@class='js-auth-signin b-navbar__exit h-ml-10']")).click();
     }
 
-    protected void openPage() {
+    protected void openMainPage() {
         driver.get(baseUrl);
     }
 
