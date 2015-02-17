@@ -21,12 +21,11 @@ public class OpportunityTest extends TestNgTestBase {
     @Test
     public void testOpportunitiesRemOnline() throws Exception {
         openMainPage();
+        clickButtonOpportunity();
 
         WebDriverWait wait = new WebDriverWait(driver, 5); // wait for a maximum of 5 seconds
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='b-feature__title h-ta-c']")));
-        
-        clickButtonOpportunity();
-        
+
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.xpath("//*[@class='b-feature__title h-ta-c']"))) break; } catch (Exception e) {}
