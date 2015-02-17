@@ -103,4 +103,8 @@ public class TestNgTestBase {
     protected void clickButoonReg() {
         driver.findElement(By.xpath("//span")).click();
     }
+
+    protected void clickButtonEnter() {
+        driver.findElement(By.xpath("//div[5]/button")).click();
+    }
 }

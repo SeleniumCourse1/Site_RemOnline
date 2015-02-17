@@ -22,7 +22,7 @@ public class AddCompanyTest extends TestNgTestBase {
         driver.findElement(By.id("l-auth-login")).sendKeys("vuz");
         driver.findElement(By.id("l-auth-pass")).clear();
         driver.findElement(By.id("l-auth-pass")).sendKeys("yura1979");
-        driver.findElement(By.xpath("//div[5]/button")).click();
+        clickButtonEnter();
         driver.findElement(By.id("l-auth-name")).clear();
         driver.findElement(By.id("l-auth-name")).sendKeys("arbuzan");
         driver.findElement(By.id("l-auth-lname")).clear();

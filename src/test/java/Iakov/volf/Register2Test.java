@@ -34,10 +34,6 @@ public class Register2Test extends TestNgTestBase {
         }
     }
 
-    protected void clickButtonEnter() {
-        driver.findElement(By.xpath("//div[5]/button")).click();
-    }
-
 
     private String closeAlertAndGetItsText() {
         try {
