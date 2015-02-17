@@ -85,6 +85,10 @@ public class TestNgTestBase {
         driver.get(baseUrl);
     }
 
+    protected void clickButtonOpportunity() {
+        driver.findElement(By.xpath("//a[contains(text(),'Возможности')]")).click();
+    }
+
     protected boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
