@@ -21,8 +21,8 @@ public class PriceTest extends TestNgTestBase {
     public void testPrice() throws Exception {
         openMainPage();
         clickToPrice();
-        driver.findElement(By.xpath("//li[@data-currency=\"UAH\"]")).click();
-        driver.findElement(By.xpath("//li[@data-currency=\"RUB\"]")).click();
+        selectCurrencyUAH();
+        selectCurrencyRUB();
         driver.findElement(By.xpath("//button")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, 5); // wait for a maximum of 5 seconds
@@ -34,6 +34,14 @@ public class PriceTest extends TestNgTestBase {
             verificationErrors.append(e.toString());
         }
         driver.findElement(By.cssSelector("div.reveal-modal-bg")).click();
+    }
+
+    private void selectCurrencyRUB() {
+        driver.findElement(By.xpath("//li[@data-currency=\"RUB\"]")).click();
+    }
+
+    private void selectCurrencyUAH() {
+        driver.findElement(By.xpath("//li[@data-currency=\"UAH\"]")).click();
     }
 
     protected void clickToPrice() {
