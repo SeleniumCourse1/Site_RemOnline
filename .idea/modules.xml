@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/Remonline2015.iml" filepath="$PROJECT_DIR$/Remonline2015.iml" />
-      <module fileurl="file://$PROJECT_DIR$/remonline-java.iml" filepath="$PROJECT_DIR$/remonline-java.iml" />
-    </modules>
+    <modules />
   </component>
 </project>
