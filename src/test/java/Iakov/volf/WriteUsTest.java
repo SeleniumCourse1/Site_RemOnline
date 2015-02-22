@@ -36,15 +36,27 @@ public class WriteUsTest {
             Thread.sleep(1000);
         }
 
+        fillTheFields("Miroslav", "miroxa1979@gmail.com", "Test1");
+        submitText();
+        clickOnPage();
+    }
+
+    private void clickOnPage() {
+        driver.findElement(By.cssSelector("div.reveal-modal-bg")).click();
+    }
+
+    private void submitText() {
+        driver.findElement(By.xpath("//div[4]/button")).click();
+    }
+
+    private void fillTheFields(String name, String mail, String text) {
         driver.findElement(By.id("l-auth-name")).click();
         driver.findElement(By.id("l-auth-name")).clear();
-        driver.findElement(By.id("l-auth-name")).sendKeys("Miroslav");
+        driver.findElement(By.id("l-auth-name")).sendKeys(name);
         driver.findElement(By.id("l-auth-email")).clear();
-        driver.findElement(By.id("l-auth-email")).sendKeys("miroxa1979@gmail.com");
+        driver.findElement(By.id("l-auth-email")).sendKeys(mail);
         driver.findElement(By.id("l-auth-message")).clear();
-        driver.findElement(By.id("l-auth-message")).sendKeys("Test1");
-        driver.findElement(By.xpath("//div[4]/button")).click();
-        driver.findElement(By.cssSelector("div.reveal-modal-bg")).click();
+        driver.findElement(By.id("l-auth-message")).sendKeys(text);
     }
 
     @After
