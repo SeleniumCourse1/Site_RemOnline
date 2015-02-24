@@ -48,15 +48,7 @@ public class TestNgTestBase {
     }
 
 
-    public void login() throws Exception {
-        openMainPage();
-        clickToLogin();
-        fillTheFields("Mary", "123456");
-        pressToSubmitButton();
-        clickToPage();
-    }
-
-    protected void verifyText(String text) {
+    public void verifyText(String text) {
         try {
             assertEquals(text, driver.findElement(By.cssSelector("div.k-grouping-header")).getText());
         } catch (Error e) {
@@ -72,14 +64,6 @@ public class TestNgTestBase {
         driver.findElement(By.xpath("//div[3]/button")).click();
     }
 
-    protected void fillTheFields(String UserName, String pass) {
-        driver.findElement(By.id("l-auth-login")).sendKeys(UserName);
-        driver.findElement(By.id("l-auth-pass")).sendKeys(pass);
-    }
-
-    protected void clickToLogin() {
-        driver.findElement(By.xpath("//*[@class='js-auth-signin b-navbar__exit h-ml-10']")).click();
-    }
 
     protected void openMainPage() {
         driver.get(baseUrl);

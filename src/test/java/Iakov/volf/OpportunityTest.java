@@ -7,8 +7,6 @@ package Iakov.volf;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -20,12 +18,8 @@ public class OpportunityTest extends TestNgTestBase {
 
     @Test
     public void testOpportunitiesRemOnline() throws Exception {
-        openMainPage();
-        clickButtonOpportunity();
-
-        WebDriverWait wait = new WebDriverWait(driver, 5); // wait for a maximum of 5 seconds
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='b-feature__title h-ta-c']")));
-
+        driver.get(baseUrl + "/");
+        driver.findElement(By.xpath("//a[contains(text(),'Возможности')]")).click();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.xpath("//*[@class='b-feature__title h-ta-c']"))) break; } catch (Exception e) {}
@@ -38,8 +32,6 @@ public class OpportunityTest extends TestNgTestBase {
             verificationErrors.append(e.toString());
         }
     }
-
-
 
 
     private String closeAlertAndGetItsText() {
