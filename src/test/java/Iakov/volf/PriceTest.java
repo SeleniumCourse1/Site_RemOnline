@@ -35,7 +35,7 @@ public class PriceTest extends TestNgTestBase {
     }
 
     @Test
-    public void TestLoginSuccess() {
+    public void TestPricePageElements() {
         try {
             pricePage.testPrice();
             registerFirstPage.onRegisterPage();
