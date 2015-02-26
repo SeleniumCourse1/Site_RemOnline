@@ -1,9 +1,15 @@
 package Iakov.volf;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import Iakov.volf.pages.PricePage;
+import Iakov.volf.pages.RegisterFirstPage;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
@@ -12,41 +18,49 @@ import static org.testng.Assert.assertEquals;
  * Created by Lena on 22/01/2015.
  */
 public class PriceTest extends TestNgTestBase {
-    private boolean acceptNextAlert = true;
+    public WebDriver driver;
+    public WebDriverWait wait;
+    protected boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    PricePage pricePage;
+    RegisterFirstPage registerFirstPage;
 
+    @BeforeClass(alwaysRun = true)
+    public void setup() {
+        wait = new WebDriverWait(driver, 5);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
+        pricePage = PageFactory.initElements(driver, PricePage.class);
+        registerFirstPage = PageFactory.initElements(driver, RegisterFirstPage.class);
+    }
 
     @Test
-    public void testPrice() throws Exception {
-        openMainPage();
-        clickToPrice();
-        selectCurrencyUAH();
-        selectCurrencyRUB();
-        driver.findElement(By.xpath("//button")).click();
-
-        WebDriverWait wait = new WebDriverWait(driver, 5); // wait for a maximum of 5 seconds
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.b-modal > h2.h-ta-c")));
-
+    public void TestLoginSuccess() {
         try {
-            assertEquals("Регистрация компании", driver.findElement(By.cssSelector("div.b-modal > h2.h-ta-c")).getText());
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
+            pricePage.testPrice();
+            registerFirstPage.onRegisterPage();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        driver.findElement(By.cssSelector("div.reveal-modal-bg")).click();
     }
 
-    private void selectCurrencyRUB() {
-        driver.findElement(By.xpath("//li[@data-currency=\"RUB\"]")).click();
-    }
 
-    private void selectCurrencyUAH() {
-        driver.findElement(By.xpath("//li[@data-currency=\"UAH\"]")).click();
-    }
 
-    protected void clickToPrice() {
-        driver.findElement(By.linkText("Стоимость")).click();
+    private String closeAlertAndGetItsText() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            String alertText = alert.getText();
+            if (acceptNextAlert) {
+                alert.accept();
+            } else {
+                alert.dismiss();
+            }
+            return alertText;
+        } finally {
+            acceptNextAlert = true;
+        }
     }
-
 }
 
