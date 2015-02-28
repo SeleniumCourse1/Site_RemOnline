@@ -80,12 +80,9 @@ public class RegisterTest extends TestNgTestBase {
         driver.findElement(By.id("l-auth-company")).sendKeys(companyName);
         //selectCountry
         driver.findElement(By.id("js-auth-country")).click();
-        for (int second = 0;; second++) {
-            if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.xpath("//div[@class='b-dropdown__content']"))) break; } catch (Exception e) {}
-            Thread.sleep(1000);
-        }
-        driver.findElement(By.xpath("//li[@data-arg-country='Азербайджан']")).click();
+        //driver.findElement(By.xpath("//li[@class='clearfix b-dropdown__item'][index]"));
+        selectCountryByIndex(3);
+        
         
         //city
         driver.findElement(By.id("l-auth-city")).click();
@@ -95,6 +92,12 @@ public class RegisterTest extends TestNgTestBase {
         //telephone
         driver.findElement(By.id("l-auth-phone")).click();
     }
+
+    private void selectCountryByIndex(int index) {
+        driver.findElement(By.xpath("//li[@class='clearfix b-dropdown__item']["+(index + 1) + " ]")).click();
+
+        }
+
 
 
     private void clickOnRegisterButton() throws InterruptedException {
