@@ -1,5 +1,6 @@
 package Iakov.volf.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -76,5 +77,22 @@ public abstract class Page {
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+    }
+
+    public boolean exists(WebElement element) {
+      try {
+             element.isDisplayed();
+          return true;
+         } catch (org.openqa.selenium.NoSuchElementException ignored) {
+             return false;
+         }
+     }
+
+    public void waitUntilElementIsLoaded(WebElement element) throws IOException, InterruptedException {
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitForElement(WebDriverWait wait, WebElement element) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(element)));
     }
 }

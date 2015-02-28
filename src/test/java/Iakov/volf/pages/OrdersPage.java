@@ -1,12 +1,10 @@
 package Iakov.volf.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
@@ -37,21 +35,11 @@ public class OrdersPage extends Page {
     }
 
     public boolean exists(WebElement element) {
-        try {
-            element.isDisplayed();
-            return true;
-        } catch (NoSuchElementException ignored) {
-            return false;
-        }
+        return super.exists(element);
     }
 
     public boolean isLoggedIn(WebElement loginButton) {
-        try {
-            loginButton.isDisplayed();
-            return true;
-        } catch (NoSuchElementException ignored) {
-            return false;
-        }
+        return super.exists(loginButton);
     }
 
     public boolean isNotLoggedIn() {
@@ -59,10 +47,10 @@ public class OrdersPage extends Page {
     }
 
     public void waitUntilElementIsLoaded(WebElement element) throws IOException, InterruptedException {
-        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(element));
+        super.waitUntilElementIsLoaded(element);
     }
 
-    public void waitForElement(WebDriverWait wait, String element) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(element)));
+    public void waitForElement(WebDriverWait wait, WebElement element) {
+        super.waitForElement(wait, element);
     }
 }
