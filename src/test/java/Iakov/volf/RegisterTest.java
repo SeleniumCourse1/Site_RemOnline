@@ -1,6 +1,7 @@
 package Iakov.volf;
 
 
+import Iakov.volf.pages.HeaderPage;
 import Iakov.volf.pages.RegisterFirstPage;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -11,7 +12,6 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**
@@ -19,17 +19,19 @@ import static org.junit.Assert.fail;
  */
 
 public class RegisterTest extends TestNgTestBase {
-    protected boolean acceptNextAlert = true;
     public StringBuffer verificationErrors = new StringBuffer();
     public WebDriverWait wait;
-    RegisterFirstPage registerFirstPage; 
+    protected boolean acceptNextAlert = true;
+    HeaderPage headerPage;
+    RegisterFirstPage registerFirstPage;
    //RegisterSecondPage registerSecondPage
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
         wait = new WebDriverWait(driver, 5);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        registerFirstPage = PageFactory.initElements(driver, RegisterFirstPage.class);
+        headerPage = PageFactory.initElements(driver, HeaderPage.class);
+        headerPage.openRegistrationFirstPage();
         //registerSecondPage = PageFactory.initElements(driver, RegisterSecondPage.class);
        
     }
@@ -62,7 +64,7 @@ public class RegisterTest extends TestNgTestBase {
    
     
     fillSecondRegisterForm("Mary", "Popinse", "SelfEmployed", "London");
-    clickButtonEnter();
+        //todo add clickbutton method
     }
 
     private void fillSecondRegisterForm(String firstName, String lastName, String companyName, String city) throws InterruptedException {

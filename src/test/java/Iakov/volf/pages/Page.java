@@ -1,5 +1,6 @@
 package Iakov.volf.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,8 +10,6 @@ import org.testng.Assert;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
-
-import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * Abstract class representation of a Page in the UI. Page object pattern
@@ -35,7 +34,7 @@ public abstract class Page {
 
     public void loadPage() {
         driver.get(getPageUrl());
-        assertEquals(getTitle(), getPageTitle());
+        //assertEquals(getTitle(), getPageTitle());
     }
 
     public void setElementText(WebElement element, String text) {
@@ -76,5 +75,22 @@ public abstract class Page {
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
+    }
+
+    public boolean exists(WebElement element) {
+        try {
+            element.isDisplayed();
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException ignored) {
+            return false;
+        }
+    }
+
+    public void waitUntilElementIsLoaded(WebElement element) throws IOException, InterruptedException {
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitForElement(WebDriverWait wait, String element) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(element)));
     }
 }

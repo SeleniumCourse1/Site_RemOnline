@@ -5,6 +5,7 @@ package Iakov.volf;
  */
 
 
+import Iakov.volf.pages.HeaderPage;
 import Iakov.volf.pages.LoginPage;
 import Iakov.volf.pages.OrdersPage;
 import junit.framework.Assert;
@@ -23,13 +24,14 @@ public class LoginTest extends TestNgTestBase {
     protected boolean acceptNextAlert = true;
     LoginPage loginPage;
     OrdersPage ordersPage;
+    HeaderPage headerPage;
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
         wait = new WebDriverWait(driver, 5);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-        loginPage = PageFactory.initElements(driver, LoginPage.class);
+        headerPage = PageFactory.initElements(driver, HeaderPage.class);
+        headerPage.openLoginPage();
         ordersPage = PageFactory.initElements(driver, OrdersPage.class);
     }
 
