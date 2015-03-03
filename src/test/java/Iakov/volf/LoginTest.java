@@ -7,6 +7,7 @@ package Iakov.volf;
 
 import Iakov.volf.pages.LoginPage;
 import Iakov.volf.pages.OrdersPage;
+import junit.framework.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -37,6 +38,20 @@ public class LoginTest extends TestNgTestBase {
         try {
             loginPage.login();
             ordersPage.onOrdersPage();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    public void TestLoginInsuccess() {
+        try {
+            loginPage.loginWithoutPass();
+            Assert.assertTrue(loginPage.isNotLoggedIn());
 
 
         } catch (Exception e) {

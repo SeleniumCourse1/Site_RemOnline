@@ -23,11 +23,13 @@ public class LoginPage extends Page {
     WebElement loginPasswordField;
     @FindBy(xpath = "//div[3]/button")
     WebElement loginButton;
+    @FindBy(xpath = "//*[@class='js-auth-signin b-navbar__exit h-ml-10']")
+    WebElement goToLoginButton;
 
     public LoginPage(WebDriver driver) {
 
         super(driver);
-        // this.PAGE_URL = "https://alphaex.insynctiveapps.com";
+        this.PAGE_URL = "dev.remonline.ru";
         //this.PAGE_TITLE = "Login";
         //This initElements method will create all WebElements
 
@@ -36,12 +38,12 @@ public class LoginPage extends Page {
     }
 
     public void openLoginPage() {
-        driver.get("http://dev.remonline.ru/");
-        driver.findElement(By.xpath("//*[@class='js-auth-signin b-navbar__exit h-ml-10']")).click();
+        driver.get(PAGE_URL);
+        clickElement(goToLoginButton);
     }
 
-    public void fillTheFields(String UserName, String pass) {
-        loginUsernameField.sendKeys(UserName);
+    public void fillTheFields(String userName, String pass) {
+        loginUsernameField.sendKeys(userName);
         loginPasswordField.sendKeys(pass);
     }
 
@@ -49,6 +51,13 @@ public class LoginPage extends Page {
         openLoginPage();
         waitUntilElementIsLoaded(loginButton);
         fillTheFields("Mary", "123456");
+        clickToLogin();
+    }
+
+    public void loginWithoutPass() throws Exception {
+        openLoginPage();
+        waitUntilElementIsLoaded(loginButton);
+        fillTheFields("Mary", "");
         clickToLogin();
     }
 
@@ -66,9 +75,10 @@ public class LoginPage extends Page {
         }
     }
 
-    public boolean isLoggedIn(WebElement loginButton) {
+
+    public boolean isLoggedIn(WebElement element) {
         try {
-            loginButton.isDisplayed();
+            element.isDisplayed();
             return true;
         } catch (NoSuchElementException ignored) {
             return false;
@@ -76,7 +86,7 @@ public class LoginPage extends Page {
     }
 
     public boolean isNotLoggedIn() {
-        return driver.findElements(By.xpath("//span[@class='js-auth-signin b-navbar__exit h-ml-10']")).size() > 0;
+        return verifyElementIsPresent(loginButton);
     }
 
     public void waitUntilElementIsLoaded(WebElement element) throws IOException, InterruptedException {

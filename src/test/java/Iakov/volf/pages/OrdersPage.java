@@ -23,8 +23,7 @@ public class OrdersPage extends Page {
     public OrdersPage(WebDriver driver) {
 
         super(driver);
-        // this.PAGE_URL = "https://alphaex.insynctiveapps.com";
-        //this.PAGE_TITLE = "Login";
+
         //This initElements method will create all WebElements
 
         PageFactory.initElements(driver, this);
