@@ -24,7 +24,7 @@ public class TestNgTestBase {
     protected static String baseUrl;
     protected static Capabilities capabilities;
     protected StringBuffer verificationErrors = new StringBuffer();
-    protected WebDriver driver;
+    protected static WebDriver driver;
 
     @BeforeSuite
     public void initTestSuite() throws IOException {
@@ -66,7 +66,7 @@ public class TestNgTestBase {
     }
 
 
-    protected void openMainPage() {
+    protected static void openMainPage() {
         driver.get(baseUrl);
     }
 
@@ -93,7 +93,7 @@ public class TestNgTestBase {
         driver.findElement(By.xpath("//span")).click();
     }
 
-    protected void clickButtonEnter() {
+    protected void submitRegisterButton() {
         driver.findElement(By.xpath("//div[5]/button")).click();
     }
 

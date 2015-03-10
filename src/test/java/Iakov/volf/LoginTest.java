@@ -5,8 +5,10 @@ package Iakov.volf;
  */
 
 
+import Iakov.volf.pages.HeaderPage;
 import Iakov.volf.pages.LoginPage;
 import Iakov.volf.pages.OrdersPage;
+import junit.framework.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -22,13 +24,14 @@ public class LoginTest extends TestNgTestBase {
     protected boolean acceptNextAlert = true;
     LoginPage loginPage;
     OrdersPage ordersPage;
+    HeaderPage headerPage;
 
     @BeforeClass(alwaysRun = true)
     public void setup() {
         wait = new WebDriverWait(driver, 5);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-        loginPage = PageFactory.initElements(driver, LoginPage.class);
+        headerPage = PageFactory.initElements(driver, HeaderPage.class);
+        headerPage.openLoginPage();
         ordersPage = PageFactory.initElements(driver, OrdersPage.class);
     }
 
@@ -37,6 +40,20 @@ public class LoginTest extends TestNgTestBase {
         try {
             loginPage.login();
             ordersPage.onOrdersPage();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    public void TestLoginInsuccess() {
+        try {
+            loginPage.loginWithoutPass();
+            Assert.assertTrue(loginPage.isNotLoggedIn());
 
 
         } catch (Exception e) {
